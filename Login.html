@@ -575,7 +575,7 @@
                         <li><a href="#" onclick="agroSwitchTab('outbound'); return false;" id="nav-tab-outbound"><span class="agro-nav-icon">🚐</span> Outbound</a></li>
                         <li><a href="#" onclick="agroSwitchTab('waterpark'); return false;" id="nav-tab-waterpark"><span class="agro-nav-icon">🌊</span> Waterpark</a></li>
                         <li><a href="#" onclick="agroSwitchTab('thana'); return false;" id="nav-tab-thana"><span class="agro-nav-icon">🌿</span> Thana</a></li>
-                        <li><a href="#" onclick="agroSwitchTab('klene'); return false;" id="nav-tab-klene"><span class="agro-nav-icon">🏛️</span> Klene Holland</a></li>
+                        <li><a href="#" onclick="agroSwitchTab('klene'); return false;" id="nav-tab-klene"><span class="agro-nav-icon">🏛️</span> Kleine Holland</a></li>
                         <li><a href="#" onclick="agroSwitchTab('glamping'); return false;" id="nav-tab-glamping"><span class="agro-nav-icon">⛺</span> Glamping</a></li>
                         <li><a href="#" onclick="agroSwitchTab('petik'); return false;" id="nav-tab-petik"><span class="agro-nav-icon">🍎</span> Petik</a></li>
                         <li><a href="#" onclick="agroSwitchTab('siteimages'); return false;" id="nav-tab-siteimages"><span class="agro-nav-icon">🖼️</span> Site Images</a></li>
@@ -602,12 +602,12 @@
                     <a href="#" class="small fw-semibold text-decoration-none" style="color: var(--primary-green); white-space:nowrap;" onclick="window.open(SITE_URL_AGRO, '_blank'); return false;">🔗 Lihat Website</a>
                     <div class="agro-topbar-icon">🔔<span class="dot"></span></div>
                     <div class="agro-topbar-icon">❔</div>
-                    <a class="agro-logout-link" onclick="logout()">Logout</a>
+                    <a class="agro-logout-link" onclick="logout()">Keluar</a>
                 </div>
 
                 <div class="agro-content">
 
-                    <!-- ===== TAB: WATERPARK / THANA / KLENE HOLLAND / GLAMPING (Simple Pages) ===== -->
+                    <!-- ===== TAB: WATERPARK / THANA / KLEINE HOLLAND / GLAMPING (Simple Pages) ===== -->
                     <div id="agro-tab-simplepage" class="agro-tab-panel" style="display:none;">
                         <div class="mb-4">
                             <div class="agro-page-title" id="sp-page-title">Memuat...</div>
@@ -1205,7 +1205,7 @@
                                     <div id="settings-api-saved-msg" class="alert alert-success py-2 small fw-semibold d-none">Konfigurasi API tersimpan.</div>
                                     <div class="mb-3">
                                         <label class="form-label small fw-bold text-secondary">API Base URL (backend CodeIgniter kamu)</label>
-                                        <input type="text" class="form-control" id="set-api-base-url" placeholder="contoh: http://kusuma-agro-backend.test/index.php/api">
+                                        <input type="text" class="form-control" id="set-api-base-url" placeholder="contoh: http://localhost/web-corporate/kusuma-agro-backend/public/index.php/api">
                                         <div class="text-muted small mt-1">Ini menunjukkan ke mana Packages/Outbound/F&amp;B akan mengambil &amp; menyimpan data begitu backend siap.</div>
                                     </div>
                                     <div class="mb-3">
@@ -1544,7 +1544,7 @@
                                 <div class="flex-grow-1">
                                     <input type="hidden" id="pkg-image">
                                     <div class="d-flex align-items-center gap-2">
-                                        <input type="file" class="form-control form-control-sm" id="pkg-image-file" accept="image/*">
+                                        <input type="file" class="form-control form-control-sm" id="pkg-image-file" accept="image/*" onchange="previewSelectedImage(this, document.getElementById('pkg-image-preview'))">
                                         <button type="button" class="btn btn-sm btn-outline-dark" onclick="uploadAndFill('pkg-image-file','pkg-image','pkg-image-status')">Upload</button>
                                     </div>
                                     <span class="small text-muted" id="pkg-image-status">Pilih foto dari perangkat kamu sendiri (bukan link dari internet).</span>
@@ -1650,7 +1650,7 @@
                                 <div class="flex-grow-1">
                                     <input type="hidden" id="sig-image">
                                     <div class="d-flex align-items-center gap-2">
-                                        <input type="file" class="form-control form-control-sm" id="sig-image-file" accept="image/*">
+                                        <input type="file" class="form-control form-control-sm" id="sig-image-file" accept="image/*" onchange="previewSelectedImage(this, document.getElementById('sig-image-preview'))">
                                         <button type="button" class="btn btn-sm btn-outline-dark" onclick="uploadAndFill('sig-image-file','sig-image','sig-image-status')">Upload</button>
                                     </div>
                                     <span class="small text-muted" id="sig-image-status">Pilih foto dari perangkat kamu sendiri.</span>
@@ -1846,7 +1846,7 @@
             <div class="flex-grow-1">
               <input type="hidden" id="sp-hero-image">
               <div class="d-flex gap-2">
-                <input type="file" class="form-control form-control-sm" id="sp-hero-image-file" accept="image/*" style="max-width:220px;">
+                <input type="file" class="form-control form-control-sm" id="sp-hero-image-file" accept="image/*" style="max-width:220px;" onchange="previewSelectedImage(this, document.getElementById('sp-hero-image-preview'))">
                 <button type="button" class="btn btn-sm btn-outline-dark" onclick="uploadAndFill('sp-hero-image-file','sp-hero-image','sp-hero-image-status')">Upload</button>
               </div>
               <span class="small text-muted" id="sp-hero-image-status">Pilih foto dari perangkat kamu sendiri.</span>
@@ -1878,7 +1878,7 @@
               <div class="flex-grow-1">
                 <input type="hidden" id="sp-about-image">
                 <div class="d-flex gap-2">
-                  <input type="file" class="form-control form-control-sm" id="sp-about-image-file" accept="image/*" style="max-width:150px;">
+                  <input type="file" class="form-control form-control-sm" id="sp-about-image-file" accept="image/*" style="max-width:150px;" onchange="previewSelectedImage(this, document.getElementById('sp-about-image-preview'))">
                   <button type="button" class="btn btn-sm btn-outline-dark" onclick="uploadAndFill('sp-about-image-file','sp-about-image','sp-about-image-status')">Upload</button>
                 </div>
                 <span class="small text-muted" id="sp-about-image-status">Foto dari perangkat sendiri.</span>
@@ -1973,7 +1973,7 @@
                             <div class="flex-grow-1">
                                 <input type="hidden" id="fb-image">
                                 <div class="d-flex align-items-center gap-2">
-                                    <input type="file" class="form-control form-control-sm" id="fb-image-file" accept="image/*">
+                                    <input type="file" class="form-control form-control-sm" id="fb-image-file" accept="image/*" onchange="previewSelectedImage(this, document.getElementById('fb-image-preview'))">
                                     <button type="button" class="btn btn-sm btn-outline-dark" onclick="uploadAndFill('fb-image-file','fb-image','fb-image-status')">Upload</button>
                                 </div>
                                 <span class="small text-muted" id="fb-image-status">Foto dari perangkat sendiri.</span>
@@ -2390,10 +2390,10 @@
            --------------------------------------------------------------------------
            Semua modul (Packages, Facilities, F&B, Schedule, Settings) memanggil
            API CodeIgniter lewat satu alamat dasar ini. Ganti sesuai domain backend
-           kamu, contoh: 'http://kusuma-agro-backend.test/index.php/api' (lokal
+           kamu, contoh: 'http://localhost/web-corporate/kusuma-agro-backend/public/index.php/api' (lokal
            Laragon) atau alamat server kantor kalau sudah production.
         ========================================================================== */
-        let API_BASE_URL = 'http://kusuma-agro-backend.test/index.php/api';
+        let API_BASE_URL = 'http://localhost/kusuma-agro-backend/index.php/api';
         let SITE_URL_AGRO = 'https://kusumaagro.netlify.app';
         let SITE_URL_INDUSTRI = 'https://kusumaindustri.netlify.app';
 
@@ -2411,6 +2411,70 @@
 
         function authHeaders() {
             return authToken ? { 'Authorization': 'Bearer ' + authToken } : {};
+        }
+
+        async function readUploadResponse(response) {
+            const result = await response.json().catch(() => ({}));
+            if (!response.ok || result.success !== true) {
+                const detail = result.error || ('HTTP ' + response.status);
+                if (response.status === 401 || response.status === 403) {
+                    throw new Error('Autentikasi gagal: ' + detail);
+                }
+                if (response.status === 413) {
+                    throw new Error('Ukuran file melebihi batas: ' + detail);
+                }
+                if (response.status === 400) {
+                    throw new Error('File gambar ditolak: ' + detail);
+                }
+                throw new Error(detail);
+            }
+            return result;
+        }
+
+        function uploadedImageUrl(result, apiBaseUrl) {
+            const apiUrl = new URL(apiBaseUrl);
+            const backendPath = apiUrl.pathname.replace(/\/(?:index\.php\/)?api\/?$/, '');
+            const backendBase = new URL((backendPath || '') + '/', apiUrl.origin);
+            if (result.url) return new URL(result.url, backendBase).href;
+            if (result.path) return new URL(result.path, backendBase).href;
+            throw new Error('Respons upload tidak memuat URL gambar.');
+        }
+
+        function previewSelectedImage(fileInput, preview) {
+            const file = fileInput.files && fileInput.files[0];
+            if (!file || !preview) return;
+
+            if (fileInput.dataset.previewObjectUrl) {
+                URL.revokeObjectURL(fileInput.dataset.previewObjectUrl);
+            }
+            fileInput.dataset.previewObjectUrl = URL.createObjectURL(file);
+            preview.src = fileInput.dataset.previewObjectUrl;
+            preview.style.display = '';
+        }
+
+        function setUploadedImagePreview(preview, url, statusEl) {
+            if (!preview) return;
+            preview.onload = () => { preview.onerror = null; };
+            preview.onerror = () => {
+                const message = 'Upload berhasil, tetapi URL preview tidak dapat dimuat.';
+                if (statusEl) statusEl.innerText = message;
+                else agroAlert(message);
+            };
+            preview.src = url;
+            preview.style.display = '';
+        }
+
+        function uploadErrorMessage(error) {
+            if (error instanceof TypeError) {
+                return 'Backend tidak dapat dijangkau. Periksa koneksi dan konfigurasi CORS.';
+            }
+            return error.message;
+        }
+
+        function releaseLocalImagePreview(fileInput) {
+            if (!fileInput.dataset.previewObjectUrl) return;
+            URL.revokeObjectURL(fileInput.dataset.previewObjectUrl);
+            delete fileInput.dataset.previewObjectUrl;
         }
 
         function logout() {
@@ -2448,13 +2512,6 @@
             }
         }
 
-        // Ambil "origin" backend (protokol+domain saja) dari API_BASE_URL, dipakai untuk
-        // menyusun URL gambar hasil upload (folder uploads/ ada di root situs, bukan di /api).
-        function apiOrigin() {
-            try { return new URL(API_BASE_URL).origin; }
-            catch (e) { return ''; }
-        }
-
         // Upload file dari <input type="file" id="fileInputId"> ke endpoint /upload,
         // lalu isi hasil URL-nya ke <input id="targetInputId"> (biasanya hidden --
         // admin gak perlu lagi ngetik/paste URL manual, tinggal pilih file dari
@@ -2478,16 +2535,16 @@
 
             try {
                 const res = await fetch(`${API_BASE_URL}/upload`, { method: 'POST', headers: authHeaders(), body: formData });
-                const result = await res.json();
-                if (!res.ok || !result.success) throw new Error(result.error || ('HTTP ' + res.status));
+                const result = await readUploadResponse(res);
 
-                targetInput.value = apiOrigin() + '/' + result.path;
-                if (previewEl) { previewEl.src = targetInput.value; previewEl.style.display = ''; }
+                targetInput.value = uploadedImageUrl(result, API_BASE_URL);
+                setUploadedImagePreview(previewEl, targetInput.value, statusEl);
                 if (statusEl) statusEl.innerText = 'Berhasil diunggah ✓';
+                releaseLocalImagePreview(fileInput);
                 fileInput.value = '';
             } catch (err) {
-                if (statusEl) statusEl.innerText = 'Gagal: ' + err.message;
-                else agroAlert('Gagal upload gambar: ' + err.message);
+                if (statusEl) statusEl.innerText = 'Gagal: ' + uploadErrorMessage(err);
+                else agroAlert('Gagal upload gambar: ' + uploadErrorMessage(err));
             }
         }
 
@@ -2690,8 +2747,8 @@
                 return `<div class="col-md-12 mb-3"><label class="form-label small fw-bold text-secondary">${meta.label}</label>
                     <input type="hidden" id="${id}" value="${idEsc(value)}">
                     <div class="d-flex align-items-center gap-2 flex-wrap">
-                        ${value ? `<img src="${idImgUrl(value)}" style="width:56px;height:56px;object-fit:cover;border-radius:8px;">` : ''}
-                        <input type="file" class="form-control form-control-sm" id="${id}-file" accept="image/*" style="max-width:220px;">
+                        <img id="${id}-preview" src="${value ? idEsc(idImgUrl(value)) : ''}" style="width:56px;height:56px;object-fit:cover;border-radius:8px;${value ? '' : 'display:none;'}">
+                        <input type="file" class="form-control form-control-sm" id="${id}-file" accept="image/*" style="max-width:220px;" onchange="previewSelectedImage(this, document.getElementById('${id}-preview'))">
                         <button type="button" class="btn btn-sm btn-outline-dark" onclick="idUploadAndFill('${id}-file','${id}','${id}-status','${meta.folder || 'misc'}')">Upload</button>
                         <span class="small text-muted" id="${id}-status"></span>
                     </div></div>`;
@@ -2724,15 +2781,17 @@
 
             try {
                 const res = await fetch(`${ID_API_BASE_URL}/upload`, { method: 'POST', headers: authHeaders(), body: formData });
-                const result = await res.json();
-                if (!res.ok || !result.success) throw new Error(result.error || ('HTTP ' + res.status));
+                const result = await readUploadResponse(res);
 
-                targetInput.value = result.path;
+                targetInput.value = uploadedImageUrl(result, ID_API_BASE_URL);
+                const preview = document.getElementById(targetInputId + '-preview');
+                setUploadedImagePreview(preview, targetInput.value, statusEl);
                 if (statusEl) statusEl.innerText = 'Berhasil diunggah ✓';
+                releaseLocalImagePreview(fileInput);
                 fileInput.value = '';
             } catch (err) {
-                if (statusEl) statusEl.innerText = 'Gagal: ' + err.message;
-                else agroAlert('Gagal upload gambar: ' + err.message);
+                if (statusEl) statusEl.innerText = 'Gagal: ' + uploadErrorMessage(err);
+                else agroAlert('Gagal upload gambar: ' + uploadErrorMessage(err));
             }
         }
 
@@ -3005,7 +3064,13 @@
                         <img src="${img.image_url}" class="siteimg-thumb" id="siteimg-thumb-${img.id}" alt="${img.label}">
                         <div class="siteimg-body">
                             <div class="siteimg-label">${img.label}</div>
-                            <input type="file" class="form-control form-control-sm mb-2" id="siteimg-file-${img.id}" accept="image/*">
+                            ${String(img.image_key || '').startsWith('hero_') ? `
+                                <label class="form-label small fw-bold text-secondary mt-2" for="siteimg-description-${img.id}">Deskripsi kartu</label>
+                                <textarea class="form-control form-control-sm mb-2" id="siteimg-description-${img.id}" rows="3">${escapeHtmlAdmin(img.description || '')}</textarea>
+                                <button type="button" class="btn btn-sm btn-outline-dark w-100 mb-2" onclick="siteImageSaveDescription(${img.id})">Simpan Deskripsi</button>
+                                <span class="siteimg-description-status small text-muted d-block mb-2" id="siteimg-description-status-${img.id}"></span>
+                            ` : ''}
+                            <input type="file" class="form-control form-control-sm mb-2" id="siteimg-file-${img.id}" accept="image/*" onchange="previewSelectedImage(this, document.getElementById('siteimg-thumb-${img.id}'))">
                             <button type="button" class="btn btn-sm btn-dark w-100" onclick="siteImageUploadAndSave(${img.id})">Upload &amp; Ganti</button>
                             <span class="siteimg-status" id="siteimg-status-${img.id}"></span>
                         </div>
@@ -3015,6 +3080,20 @@
 
                 wrap.appendChild(grid);
             });
+        }
+
+        async function siteImageSaveDescription(id) {
+            const input = document.getElementById(`siteimg-description-${id}`);
+            const statusEl = document.getElementById(`siteimg-description-status-${id}`);
+            if (!input || !statusEl) return;
+
+            statusEl.innerText = 'Menyimpan...';
+            try {
+                await SiteImageAPI.update(id, { description: input.value.trim() });
+                statusEl.innerText = 'Deskripsi tersimpan.';
+            } catch (err) {
+                statusEl.innerText = 'Gagal menyimpan: ' + err.message;
+            }
         }
 
         async function siteImageUploadAndSave(id) {
@@ -3033,17 +3112,17 @@
 
             try {
                 const uploadRes = await fetch(`${API_BASE_URL}/upload`, { method: 'POST', headers: authHeaders(), body: formData });
-                const uploadResult = await uploadRes.json();
-                if (!uploadRes.ok || !uploadResult.success) throw new Error(uploadResult.error || ('HTTP ' + uploadRes.status));
+                const uploadResult = await readUploadResponse(uploadRes);
 
-                const fullUrl = apiOrigin() + '/' + uploadResult.path;
+                const fullUrl = uploadedImageUrl(uploadResult, API_BASE_URL);
                 await SiteImageAPI.update(id, { image_url: fullUrl });
 
-                thumbEl.src = fullUrl;
+                setUploadedImagePreview(thumbEl, fullUrl, statusEl);
                 statusEl.innerText = 'Berhasil diganti ✓';
+                releaseLocalImagePreview(fileInput);
                 fileInput.value = '';
             } catch (err) {
-                statusEl.innerText = 'Gagal: ' + err.message;
+                statusEl.innerText = 'Gagal: ' + uploadErrorMessage(err);
             }
         }
 
@@ -3222,7 +3301,7 @@
             rowEl.innerHTML = `
                 <img src="${safeUrl}" alt="" style="width:36px;height:36px;object-fit:cover;border-radius:6px;border:1px solid #e6e2de;display:${url ? '' : 'none'};flex-shrink:0;" class="pkg-gallery-preview">
                 <input type="hidden" class="pkg-gallery-url" value="${safeUrl}">
-                <input type="file" class="form-control form-control-sm pkg-gallery-file" accept="image/*" style="max-width:200px;">
+                <input type="file" class="form-control form-control-sm pkg-gallery-file" accept="image/*" style="max-width:200px;" onchange="previewSelectedImage(this, this.closest('.pkg-gallery-item').querySelector('.pkg-gallery-preview'))">
                 <button type="button" class="btn btn-sm btn-outline-dark text-nowrap" onclick="pkgGalleryUpload(this)">Upload</button>
                 <button type="button" class="btn btn-sm btn-outline-danger" onclick="this.closest('.pkg-gallery-item').remove()">✕</button>
             `;
@@ -3248,14 +3327,14 @@
 
             try {
                 const res = await fetch(`${API_BASE_URL}/upload`, { method: 'POST', headers: authHeaders(), body: formData });
-                const result = await res.json();
-                if (!res.ok || !result.success) throw new Error(result.error || ('HTTP ' + res.status));
+                const result = await readUploadResponse(res);
 
-                urlInput.value = apiOrigin() + '/' + result.path;
-                if (previewEl) { previewEl.src = urlInput.value; previewEl.style.display = ''; }
+                urlInput.value = uploadedImageUrl(result, API_BASE_URL);
+                setUploadedImagePreview(previewEl, urlInput.value);
+                releaseLocalImagePreview(fileInput);
                 fileInput.value = '';
             } catch (err) {
-                agroAlert('Gagal upload gambar: ' + err.message);
+                agroAlert('Gagal upload gambar: ' + uploadErrorMessage(err));
             } finally {
                 btnEl.innerText = originalLabel;
                 btnEl.disabled = false;
@@ -3415,7 +3494,7 @@
             rowEl.innerHTML = `
                 <img src="${safeUrl}" alt="" style="width:36px;height:36px;object-fit:cover;border-radius:6px;border:1px solid #e6e2de;display:${url ? '' : 'none'};flex-shrink:0;" class="sig-gallery-preview">
                 <input type="hidden" class="sig-gallery-url" value="${safeUrl}">
-                <input type="file" class="form-control form-control-sm sig-gallery-file" accept="image/*" style="max-width:200px;">
+                <input type="file" class="form-control form-control-sm sig-gallery-file" accept="image/*" style="max-width:200px;" onchange="previewSelectedImage(this, this.closest('.sig-gallery-item').querySelector('.sig-gallery-preview'))">
                 <button type="button" class="btn btn-sm btn-outline-dark text-nowrap" onclick="sigGalleryUpload(this)">Upload</button>
                 <button type="button" class="btn btn-sm btn-outline-danger" onclick="this.closest('.sig-gallery-item').remove()">✕</button>
             `;
@@ -3441,14 +3520,14 @@
 
             try {
                 const res = await fetch(`${API_BASE_URL}/upload`, { method: 'POST', headers: authHeaders(), body: formData });
-                const result = await res.json();
-                if (!res.ok || !result.success) throw new Error(result.error || ('HTTP ' + res.status));
+                const result = await readUploadResponse(res);
 
-                urlInput.value = apiOrigin() + '/' + result.path;
-                if (previewEl) { previewEl.src = urlInput.value; previewEl.style.display = ''; }
+                urlInput.value = uploadedImageUrl(result, API_BASE_URL);
+                setUploadedImagePreview(previewEl, urlInput.value);
+                releaseLocalImagePreview(fileInput);
                 fileInput.value = '';
             } catch (err) {
-                agroAlert('Gagal upload gambar: ' + err.message);
+                agroAlert('Gagal upload gambar: ' + uploadErrorMessage(err));
             } finally {
                 btnEl.innerText = originalLabel;
                 btnEl.disabled = false;
@@ -5105,6 +5184,8 @@
 
         function spAppendRow(rowsContainer, row = { col1: '', col2: '', col3: '', col4: '' }) {
             const isWahanaCards = isCardStyleTab(currentSpTab);
+            const categoryTitle = rowsContainer.closest('.sp-category-block')?.querySelector('.sp-cat-title')?.value || '';
+            const isGlampingRental = currentSpTab === 'glamping' && categoryTitle.trim().toLowerCase().startsWith('sewa perlengkapan');
             const rowEl = document.createElement('div');
             rowEl.className = 'row g-2 mb-2 sp-cat-row-item align-items-center';
             if (isWahanaCards) {
@@ -5120,7 +5201,29 @@
                     <div class="d-flex align-items-center gap-2">
                         <img id="${urlId}-preview" src="${safeUrl}" alt="" style="width:36px;height:36px;object-fit:cover;border-radius:6px;border:1px solid #e6e2de;display:${row.col3 ? '' : 'none'};flex-shrink:0;">
                         <input type="hidden" class="sp-row-col3" id="${urlId}" value="${safeUrl}">
-                        <input type="file" class="form-control form-control-sm" id="${fileId}" accept="image/*">
+                        <input type="file" class="form-control form-control-sm" id="${fileId}" accept="image/*" onchange="previewSelectedImage(this, document.getElementById('${urlId}-preview'))">
+                        <button type="button" class="btn btn-sm btn-outline-dark" onclick="uploadAndFill('${fileId}','${urlId}','${statusId}')">Upload</button>
+                    </div>
+                    <span class="small text-muted" id="${statusId}"></span>
+                </div>
+                <div class="col-1"><button type="button" class="btn btn-sm btn-outline-danger" onclick="this.closest('.sp-cat-row-item').remove()">✕</button></div>
+                `;
+            } else if (isGlampingRental) {
+                const idx = spRowPhotoCounter++;
+                const fileId = 'sp-rental-photo-file-' + idx;
+                const urlId = 'sp-rental-photo-url-' + idx;
+                const statusId = 'sp-rental-photo-status-' + idx;
+                const safeUrl = (row.image_url || '').replace(/"/g, '&quot;');
+                rowEl.innerHTML = `
+                <div class="col-2"><input type="text" class="form-control form-control-sm sp-row-col1" placeholder="Item" value="${(row.col1||'').replace(/"/g,'&quot;')}"></div>
+                <div class="col-3"><input type="text" class="form-control form-control-sm sp-row-col2" placeholder="Harga" value="${(row.col2||'').replace(/"/g,'&quot;')}"></div>
+                <div class="col-2"><input type="text" class="form-control form-control-sm sp-row-col3" placeholder="Kelompok / Info" value="${(row.col3||'').replace(/"/g,'&quot;')}"></div>
+                <div class="col-2"><input type="text" class="form-control form-control-sm sp-row-col4" placeholder="Catatan" value="${(row.col4||'').replace(/"/g,'&quot;')}"></div>
+                <div class="col-2">
+                    <div class="d-flex align-items-center gap-1">
+                        <img id="${urlId}-preview" src="${safeUrl}" alt="" style="width:36px;height:36px;object-fit:cover;border-radius:6px;border:1px solid #e6e2de;display:${row.image_url ? '' : 'none'};flex-shrink:0;">
+                        <input type="hidden" class="sp-row-image-url" id="${urlId}" value="${safeUrl}">
+                        <input type="file" class="form-control form-control-sm" id="${fileId}" accept="image/*" aria-label="Pilih foto item" onchange="previewSelectedImage(this, document.getElementById('${urlId}-preview'))">
                         <button type="button" class="btn btn-sm btn-outline-dark" onclick="uploadAndFill('${fileId}','${urlId}','${statusId}')">Upload</button>
                     </div>
                     <span class="small text-muted" id="${statusId}"></span>
@@ -5157,12 +5260,17 @@
                     col2_label: isWahanaCards ? 'Deskripsi' : (col2Label ? col2Label.value : '') || 'Keterangan',
                     col3_label: isWahanaCards ? 'Foto' : (col3Label ? col3Label.value : '') || 'Info',
                     col4_label: isWahanaCards ? '' : (col4Label ? col4Label.value : '') || 'Catatan',
-                    rows: [...block.querySelectorAll('.sp-cat-row-item')].map(r => ({
-                        col1: r.querySelector('.sp-row-col1').value,
-                        col2: r.querySelector('.sp-row-col2').value,
-                        col3: r.querySelector('.sp-row-col3').value,
-                        col4: isWahanaCards ? '' : (r.querySelector('.sp-row-col4') ? r.querySelector('.sp-row-col4').value : '')
-                    }))
+                    rows: [...block.querySelectorAll('.sp-cat-row-item')].map(r => {
+                        const row = {
+                            col1: r.querySelector('.sp-row-col1').value,
+                            col2: r.querySelector('.sp-row-col2').value,
+                            col3: r.querySelector('.sp-row-col3').value,
+                            col4: isWahanaCards ? '' : (r.querySelector('.sp-row-col4') ? r.querySelector('.sp-row-col4').value : '')
+                        };
+                        const imageInput = r.querySelector('.sp-row-image-url');
+                        if (imageInput) row.image_url = imageInput.value.trim() || null;
+                        return row;
+                    })
                 };
             });
         }
@@ -5193,7 +5301,7 @@
                         <div class="flex-grow-1">
                             <input type="hidden" class="sp-gallery-url" id="${urlId}" value="${safeUrl}">
                             <div class="d-flex gap-2 align-items-center">
-                                <input type="file" class="form-control form-control-sm" id="${fileId}" accept="image/*">
+                                <input type="file" class="form-control form-control-sm" id="${fileId}" accept="image/*" onchange="previewSelectedImage(this, document.getElementById('${urlId}-preview'))">
                                 <button type="button" class="btn btn-sm btn-outline-dark" onclick="uploadAndFill('${fileId}','${urlId}','${statusId}')">Upload</button>
                             </div>
                             <span class="small text-muted" id="${statusId}"></span>

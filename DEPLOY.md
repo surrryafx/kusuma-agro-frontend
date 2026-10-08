@@ -37,8 +37,8 @@ Semuanya masih menunjuk domain development `.test`. Kalau tidak diganti, dashboa
 
 | Baris | Menunjuk ke | Ganti jadi |
 |---|---|---|
-| ~2393 | `http://kusuma-agro-backend.test/index.php/api` | `https://api-agro.kusuma.id/index.php/api` |
-| ~2396 | `http://kusuma-agro-backend.test/index.php/api` | `https://api-agro.kusuma.id/index.php/api` |
+| ~2393 | `http://localhost/kusuma-agro-backend/public/index.php/api` | `https://api-agro.kusuma.id/index.php/api` |
+| ~2396 | `http://localhost/kusuma-agro-backend/public/index.php/api` | `https://api-agro.kusuma.id/index.php/api` |
 | ~2503 | `http://kusuma-id-admin.test/api` | `https://www.kusuma.id/api` |
 | ~2806 | `http://kusuma-industri.test` | `https://industri.kusuma.id` |
 
